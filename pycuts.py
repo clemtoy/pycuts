@@ -26,7 +26,7 @@ def procedure(*func):
     return {f:f(*args) for f, *args in func}
 
 def flatten(lst):
-    """ Ex: flatten([[1, 2], [[3, 4], [5, 6]], 7]) returns [1, 2, 3, 4, 5, 6, 7]
+    """ Ex: flatten([[1, 2], [[3, 4], [5, 6]], 7]) returns [1, 2, 3, 4, 5, 6, 7] """
     res = []
     for item in lst:
         res += item if isinstance(item, list) else [item]
