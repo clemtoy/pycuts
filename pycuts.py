@@ -24,3 +24,10 @@ def condassign(variable):
 def procedure(*func):
     """ Ex: procedure((sum, (3, 3, 4)),(sorted, [1,3,2])) returns {<function sum>: 10, <function sorted>: [1, 2, 3]} """
     return {f:f(*args) for f, *args in func}
+
+def flatten(lst):
+    """ Ex: flatten([[1, 2], [[3, 4], [5, 6]], 7]) returns [1, 2, 3, 4, 5, 6, 7]
+    res = []
+    for item in lst:
+        res += item if isinstance(item, list) else [item]
+    return flatten(res) if any(isinstance(item, list) for item in res) else res
