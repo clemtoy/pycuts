@@ -21,3 +21,6 @@ def condassign(variable):
                 return r[i]  
     return f
 
+def procedure(*func):
+    """ Ex: procedure((sum, (3, 3, 4)),(sorted, [1,3,2])) returns {<function sum>: 10, <function sorted>: [1, 2, 3]} """
+    return {f:f(*args) for f, *args in func}
