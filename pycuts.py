@@ -2,6 +2,12 @@
 
 from __future__ import division
 
+
+def attlist(lst, name):
+    """ Ex: attlist(lst, 'v') is equivalent to [item.v for item in lst] """
+    return [o.__dict__[name] for o in lst]
+
+
 def avg(iterable):
     """ Ex: avg([2, 4]) returns 3 """ 
     return sum(iterable) / len(iterable)
@@ -38,13 +44,8 @@ def condexec(variable, usevar=False):
             if r[i - 1] <= variable <= r[i + 1]:
                 return r[i](variable) if usevar else r[i]()  
     return f
-
-
-def procedure(*func):
-    """ Ex: procedure((sum, (3, 3, 4)),(sorted, [1,3,2])) returns {<function sum>: 10, <function sorted>: [1, 2, 3]} """
-    return {f:f(*args) for f, *args in func}
-
-
+    
+    
 def flatten(lst):
     """ Ex: flatten([[1, 2], [[3, 4], [5, 6]], 7]) returns [1, 2, 3, 4, 5, 6, 7] """
     res = []
@@ -53,9 +54,9 @@ def flatten(lst):
     return flatten(res) if any(isinstance(item, list) for item in res) else res
 
 
-def attlist(lst, name):
-    """ Ex: attlist(lst, 'v') is equivalent to [item.v for item in lst] """
-    return [o.__dict__[name] for o in lst]
+def procedure(*func):
+    """ Ex: procedure((sum, (3, 3, 4)),(sorted, [1,3,2])) returns {<function sum>: 10, <function sorted>: [1, 2, 3]} """
+    return {f:f(*args) for f, *args in func}
 
 
 def splitlist(lst, *splt):
