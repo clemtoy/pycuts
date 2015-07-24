@@ -51,3 +51,9 @@ def flatten(lst):
     for item in lst:
         res += item if isinstance(item, list) else [item]
     return flatten(res) if any(isinstance(item, list) for item in res) else res
+
+
+def attlist(lst, name):
+    """ Ex: attlist(lst, 'v') is equivalent to [item.v for item in lst] """
+    return [o.__dict__[name] for o in lst]
+
