@@ -57,3 +57,9 @@ def attlist(lst, name):
     """ Ex: attlist(lst, 'v') is equivalent to [item.v for item in lst] """
     return [o.__dict__[name] for o in lst]
 
+
+def splitlist(lst, *splt):
+    """ Ex: split([1,2,3,4,5,6,7,8,9,10], 3, 7) returns [[1, 2], [4, 5, 6], [8, 9, 10]] """
+    from itertools import groupby
+    return [list(gp) for k, gp in groupby(lst, lambda i:i in splt) if not k]
+
