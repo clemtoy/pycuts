@@ -1,4 +1,7 @@
 # -*- coding:utf-8 -*-
+"""
+Clement Michard (c) 2015
+"""
 
 from __future__ import division
 
