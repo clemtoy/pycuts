@@ -67,3 +67,16 @@ def splitlist(lst, *splt):
     from itertools import groupby
     return [list(gp) for k, gp in groupby(lst, lambda i:i in splt) if not k]
 
+def test(test_func):
+    """ Ex:
+        @test(function_of_tests)
+        def function_whose_result_will_be_tested_by_function_of_tests:
+            ...
+    """
+    def decorator(func_to_test):
+        def wrapper(*args, **kwargs):
+            res = func_to_test(*args, **kwargs)
+            test_func(res)
+            return res
+        return wrapper
+    return decorator
